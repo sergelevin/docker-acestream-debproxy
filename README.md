@@ -21,7 +21,7 @@ Then you should:
 
 2. Create the container based on downloaded or built image
   ```
-  docker create --name=aceproxy -p 8000 -v /etc/aceproxy:/etc/aceproxy:ro sergelevin/acestream-debproxy
+  docker create --name=aceproxy -p 8000:8000 -v /etc/aceproxy:/etc/aceproxy:ro sergelevin/acestream-debproxy
   ```
 
 3. If you have any configuration files for the aceproxy, put them to /etc/aceproxy on the host. aceconfig.py will be used as main config file and plugin-specific config files will be automatically copied to plugins/conf within the docker image upon start. Since these files might contain sensitive information (e.g. passwords) make sure noone but root can read them.
