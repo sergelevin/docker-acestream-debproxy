@@ -1,5 +1,5 @@
-# Set base to Debian wheezy
-FROM debian:wheezy
+# Set base to Debian jessie
+FROM debian:jessie
 
 MAINTAINER Serge A. Levin <serge.levin.spb@gmail.com>
 
@@ -26,14 +26,13 @@ RUN apt-get update -y && \
     useradd --system --create-home --no-user-group --gid nogroup aceproxy && \
 
 # install acestream-engine
-    wget  -o - http://dl.acestream.org/debian/7/acestream_3.0.5.1_debian_7.4_x86_64.tar.gz && \
-    tar --show-transformed-names --transform='s/acestream_3.0.5.1_debian_7.4_x86_64/acestream/' -vzxf acestream_3.0.5.1_debian_7.4_x86_64.tar.gz && \
+    wget  -o - http://dl.acestream.org/linux/acestream_3.1.16_debian_8.7_x86_64.tar.gz && \
+    tar --show-transformed-names --transform='s/acestream_3.1.16_debian_8.7_x86_64/acestream/' -vzxf acestream_3.1.16_debian_8.7_x86_64.tar.gz && \
     mv acestream /usr/share && \
-    ln -s /usr/share/acestream/acestreamengine /usr/bin/acestreamengine && \
     rm -rf /tmp/* && \
 
 # obtain and unpack aceproxy
-    wget -o - https://github.com/ValdikSS/aceproxy/archive/a937b0c1.zip -O aceproxy.zip && \
+    wget -o - https://github.com/ValdikSS/aceproxy/archive/73da4c4.zip -O aceproxy.zip && \
     unzip -d /home/aceproxy aceproxy.zip && \
     mv /home/aceproxy/aceproxy-* /home/aceproxy/aceproxy && \
     rm -rf /tmp/*
